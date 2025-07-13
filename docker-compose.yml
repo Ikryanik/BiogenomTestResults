@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  biogenomtestresults:
+    image: ${DOCKER_REGISTRY-}biogenomtestresults
+    build:
+      context: .
+      dockerfile: BiogenomTestResults/Dockerfile
+    environment:
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings:DefaultConnection=Host=postgres;Port=5432;Database=bopgenomdb;Username=biogenomuser;Password=biogenompassword
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      - POSTGRES_USER=biogenomuser
+      - POSTGRES_PASSWORD=biogenompassword
+      - POSTGRES_DB=bopgenomdb
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

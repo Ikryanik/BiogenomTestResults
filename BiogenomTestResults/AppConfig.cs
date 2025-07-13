@@ -15,5 +15,5 @@ public class AppConfig
 
 public class ConnectionStringsConfig
 {
-    public string DefaultConnection { get; set; }
+    public string DefaultConnection { get; set; } = null!;
 }
