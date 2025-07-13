@@ -4,5 +4,5 @@ public class HealthIndicatorAfterTreatmentDto
 {
     public decimal OldResult { get; set; }
 
-    public virtual HealthIndicatorDto HealthIndicator { get; set; } = null!;
+    public HealthIndicatorDto HealthIndicator { get; set; } = null!;
 }

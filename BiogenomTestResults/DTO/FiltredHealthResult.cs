@@ -2,9 +2,20 @@
 
 public class FiltredHealthResult
 {
+    /// <summary>
+    /// Тип суточного потребления (снижено/достаточно)
+    /// </summary>
     public FilterHealthResultType Type { get; set; }
-    public int Count => HealthResult.Count;
-    public List<HealthIndicatorResultDto> HealthResult { get; set; } = new List<HealthIndicatorResultDto>();
+
+    /// <summary>
+    /// Количество показателей здоровья
+    /// </summary>
+    public int Count => HealthResult.Length;
+
+    /// <summary>
+    /// Список показателей здоровья
+    /// </summary>
+    public HealthIndicatorResultDto[] HealthResult { get; set; } = Array.Empty<HealthIndicatorResultDto>();
 }
 
 public enum FilterHealthResultType

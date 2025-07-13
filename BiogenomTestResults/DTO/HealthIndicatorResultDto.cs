@@ -4,7 +4,13 @@ namespace BiogenomTestResults.DTO;
 
 public class HealthIndicatorResultDto
 {
+    /// <summary>
+    /// Результат показателя здоровья после тестирования
+    /// </summary>
     public decimal Result { get; set; }
 
-    public virtual HealthIndicatorDto HealthIndicator { get; set; } = null!;
+    /// <summary>
+    /// Показатель здоровья
+    /// </summary>
+    public HealthIndicatorDto HealthIndicator { get; set; } = null!;
 }

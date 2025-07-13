@@ -2,6 +2,7 @@ using BiogenomTestResults.DbContext;
 using BiogenomTestResults.Repositories;
 using BiogenomTestResults.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace BiogenomTestResults
 {
@@ -24,7 +25,11 @@ namespace BiogenomTestResults
                 options.UseNpgsql(appConfig.ConnectionStrings.DefaultConnection));
 
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(options =>
+            {
+                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+            });
 
             var app = builder.Build();
 

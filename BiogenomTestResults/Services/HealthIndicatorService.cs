@@ -8,27 +8,32 @@ public class HealthIndicatorService(HealthIndicatorResultsRepository healthIndic
 {
     private CurrentDailyIntakeResult FilterHealthIndicatorResults(HealthIndicatorResultDto[] healthIndicatorResults)
     {
-        var normal = new FiltredHealthResult
-        {
-            Type = FilterHealthResultType.Normal
-        };
-
-        var low = new FiltredHealthResult
-        {
-            Type = FilterHealthResultType.Low
-        };
+        var lowList = new List<HealthIndicatorResultDto>();
+        var normalList = new List<HealthIndicatorResultDto>();
 
         foreach (var result in healthIndicatorResults)
         {
             if (result.Result >= result.HealthIndicator.Norm)
             {
-                normal.HealthResult.Add(result);
+                normalList.Add(result);
             }
             else
             {
-                low.HealthResult.Add(result);
+                lowList.Add(result);
             }
         }
+
+        var normal = new FiltredHealthResult
+        {
+            Type = FilterHealthResultType.Normal,
+            HealthResult = normalList.ToArray()
+        };
+
+        var low = new FiltredHealthResult
+        {
+            Type = FilterHealthResultType.Low,
+            HealthResult = lowList.ToArray()
+        };
 
         return new CurrentDailyIntakeResult
         {

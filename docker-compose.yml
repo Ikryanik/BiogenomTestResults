@@ -7,6 +7,7 @@ services:
       context: .
       dockerfile: BiogenomTestResults/Dockerfile
     environment:
+      - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ConnectionStrings:DefaultConnection=Host=postgres;Port=5432;Database=bopgenomdb;Username=biogenomuser;Password=biogenompassword
     ports:

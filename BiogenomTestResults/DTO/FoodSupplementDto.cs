@@ -4,11 +4,23 @@ namespace BiogenomTestResults.DTO;
 
 public class FoodSupplementDto
 {
+    /// <summary>
+    /// Идентификатор БАДа
+    /// </summary>
     public long Id { get; set; }
 
+    /// <summary>
+    /// Наименование БАДа
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Описание БАДа
+    /// </summary>
     public string? Description { get; set; }
 
-    public virtual ICollection<FoodSupplementImageDto> FoodSupplementImages { get; set; } = new List<FoodSupplementImageDto>();
+    /// <summary>
+    /// Список изображений БАДа
+    /// </summary>
+    public FoodSupplementImageDto[] FoodSupplementImages { get; set; } = Array.Empty<FoodSupplementImageDto>();
 }
