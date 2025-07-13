@@ -4,7 +4,7 @@ using BiogenomTestResults.Repositories;
 
 namespace BiogenomTestResults.Services;
 
-public class HealthIndicatorService(HealthIndicatorResultsRepository healthIndicatorResultsRepository, FoodSupplementsService foodSupplementsService)
+public class HealthIndicatorService(HealthIndicatorResultsRepository healthIndicatorResultsRepository)
 {
     private CurrentDailyIntakeResult FilterHealthIndicatorResults(HealthIndicatorResultDto[] healthIndicatorResults)
     {

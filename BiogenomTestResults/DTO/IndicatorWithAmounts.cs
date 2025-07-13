@@ -10,7 +10,7 @@ public class IndicatorWithAmounts
     /// <summary>
     /// Наименование показателя здоровья
     /// </summary>
-    public string IndicatorName { get; set;}
+    public string IndicatorName { get; set; } = null!;
     
     /// <summary>
     /// Текущий результат показателя здоровья
